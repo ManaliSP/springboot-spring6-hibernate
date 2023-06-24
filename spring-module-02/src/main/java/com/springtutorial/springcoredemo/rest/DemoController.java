@@ -14,19 +14,25 @@ public class DemoController {
 
     //Constructor injection
     @Autowired
-    public DemoController(@Qualifier("baseballCoach") Coach theCoach){
+    public DemoController(Coach theCoach){
         myCoach = theCoach;
     }
 
-    //Setter Injection
+      //Constructor injection using Qualifiers
+//    @Autowired
+//    public DemoController(@Qualifier("baseballCoach") Coach theCoach){
+//        myCoach = theCoach;
+//    }
+
+      //Setter Injection
 //    @Autowired
 //    public void setCoach(Coach theCoach) {
 //        myCoach = theCoach;
 //    }
-//
-//    //Field Injection
+
+      //Field Injection
 //    @Autowired
-//    private Coach coach;
+//    private Coach fieldCoach;
 
     @GetMapping("/dailyworkout")
     public String getDailyWorkout() {
