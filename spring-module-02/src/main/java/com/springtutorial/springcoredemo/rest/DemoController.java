@@ -13,16 +13,17 @@ public class DemoController {
     private Coach myCoach;
 
     //Constructor injection
-    @Autowired
-    public DemoController(Coach theCoach){
-        myCoach = theCoach;
-    }
-
-      //Constructor injection using Qualifiers
 //    @Autowired
-//    public DemoController(@Qualifier("baseballCoach") Coach theCoach){
+//    public DemoController(Coach theCoach){
 //        myCoach = theCoach;
 //    }
+
+      //Constructor injection using Qualifiers
+    @Autowired
+    public DemoController(@Qualifier("cricketCoach") Coach theCoach){
+        System.out.println("In constructor: " + getClass().getSimpleName());
+        myCoach = theCoach;
+    }
 
       //Setter Injection
 //    @Autowired
