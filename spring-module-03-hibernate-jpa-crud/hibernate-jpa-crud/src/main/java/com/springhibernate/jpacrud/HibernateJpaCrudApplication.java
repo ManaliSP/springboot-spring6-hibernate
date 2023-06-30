@@ -22,12 +22,24 @@ public class HibernateJpaCrudApplication {
 //			createStudent(studentDAO);
 //			createMultipleStudents(studentDAO);
 //			readStudent(studentDAO);
+//			queryForStudents(studentDAO);
 
-			queryDForStudents(studentDAO);
+			queryForStudentsByLastName(studentDAO);
 		};
 	}
 
-	private void queryDForStudents(StudentDAO studentDAO) {
+	private void queryForStudentsByLastName(StudentDAO studentDAO) {
+
+		// get a list students
+		List<Student> students = studentDAO.findByLastName("Doe");
+
+		// display list of students
+		for (Student student : students) {
+			System.out.println(student);
+		}
+	}
+
+	private void queryForStudents(StudentDAO studentDAO) {
 
 		// get a list of students
 		List<Student> students = studentDAO.findAll();
