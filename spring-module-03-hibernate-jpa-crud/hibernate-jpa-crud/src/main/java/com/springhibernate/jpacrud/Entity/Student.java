@@ -1,6 +1,12 @@
-package springmodule03hibernatejpacrud.Entity;
+package com.springhibernate.jpacrud.Entity;
 
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
 
 @Entity
 @Table(name="student")
@@ -25,7 +31,7 @@ public class Student {
     public Student(){
 
     }
-    
+
     public Student(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
