@@ -4,4 +4,6 @@ import com.springhibernate.jpacrud.Entity.Student;
 
 public interface StudentDAO {
     void save(Student student);
+
+    Student findById(Integer id);
 }
