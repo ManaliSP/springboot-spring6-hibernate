@@ -47,7 +47,7 @@ public class EmployeeDAOJpaImplementation implements EmployeeDAO{
     public Employee save(Employee employee) {
 
         // save employee
-        Employee dbEmployee = entityManager.merge(new Employee());
+        Employee dbEmployee = entityManager.merge(employee);
 
         // return the dbEmployee
         return dbEmployee;
