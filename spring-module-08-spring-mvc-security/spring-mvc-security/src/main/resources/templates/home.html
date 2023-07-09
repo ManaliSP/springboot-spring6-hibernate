@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>SpringBoot Company Home Page</title>
@@ -11,6 +12,16 @@
     <p>
         Welcome to the SpringBoot Company Home Page!
     </p>
+
+    <hr>
+        <!-- Display username and role -->
+        <p>
+            User: <span sec:authentication="principal.username"></span>
+            <br><br>
+            Role(s): <span sec:authentication="principal.authorities"></span>
+        </p>
+    <hr>
+
     <!-- Add a logout button -->
     <form action="#" th:action="@{/logout}" method="POST">
 
