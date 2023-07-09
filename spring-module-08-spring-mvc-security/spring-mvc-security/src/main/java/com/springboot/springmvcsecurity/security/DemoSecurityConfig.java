@@ -45,8 +45,10 @@ public class DemoSecurityConfig {
                 .formLogin(form ->
                         form
                                 .loginPage("/showMyLoginPage")
-                                .loginProcessingUrl("/authenticateTheUser") // No Custom coding required for /authenticateTheUser
+                                .loginProcessingUrl("/authenticateTheUser") // No Custom coding required for /authenticateTheUser / handled by Spring security filters
                                 .permitAll()
+                )
+                .logout(logout -> logout.permitAll()
                 );
 
         return http.build();
