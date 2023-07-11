@@ -49,8 +49,21 @@ public class AdvancedMappingCruddemoApplication {
 
 //			createCourseAndStudents(appDAO);
 
-			findCourseAndStudents(appDAO);
+//			findCourseAndStudents(appDAO);
+
+			findStudentAndCourses(appDAO);
 		};
+	}
+
+	private void findStudentAndCourses(AppDAO appDAO) {
+
+		int id = 1;
+		Student student = appDAO.findStudentAndCoursesByStudentId(id);
+
+		System.out.println("Student: " + student);
+		System.out.println("Associated courses: " + student.getCourses());
+
+		System.out.println("Done!");
 	}
 
 	private void findCourseAndStudents(AppDAO appDAO) {

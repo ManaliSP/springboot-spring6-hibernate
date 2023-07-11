@@ -3,6 +3,7 @@ package com.springboot.advancedmappingcruddemo.dao;
 import com.springboot.advancedmappingcruddemo.entity.Course;
 import com.springboot.advancedmappingcruddemo.entity.Instructor;
 import com.springboot.advancedmappingcruddemo.entity.InstructorDetail;
+import com.springboot.advancedmappingcruddemo.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -175,5 +176,22 @@ public class AppDAOImpl implements AppDAO{
         Course course = query.getSingleResult();
 
         return course;
+    }
+
+    @Override
+    public Student findStudentAndCoursesByStudentId(int id) {
+
+        // create a query
+        TypedQuery<Student> query = entityManager.createQuery(
+                "select s from Student s " +
+                        "JOIN FETCH s.courses " +
+                        "where s.id = :data", Student.class);
+
+        query.setParameter("data", id);
+
+        // execute a query
+        Student student = query.getSingleResult();
+
+        return student;
     }
 }

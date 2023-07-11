@@ -3,6 +3,7 @@ package com.springboot.advancedmappingcruddemo.dao;
 import com.springboot.advancedmappingcruddemo.entity.Course;
 import com.springboot.advancedmappingcruddemo.entity.Instructor;
 import com.springboot.advancedmappingcruddemo.entity.InstructorDetail;
+import com.springboot.advancedmappingcruddemo.entity.Student;
 
 import java.util.List;
 
@@ -34,4 +35,6 @@ public interface AppDAO {
     Course findCourseAndReviewsByCourseId(int id);
 
     Course findCourseAndStudentsByCourseId(int id);
+
+    Student findStudentAndCoursesByStudentId(int id);
 }
