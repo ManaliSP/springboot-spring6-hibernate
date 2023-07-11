@@ -25,7 +25,7 @@ public class AdvancedMappingCruddemoApplication {
 
 //			findInstructor(appDAO);
 
-//			deleteInstructor(appDAO);
+			deleteInstructor(appDAO);
 
 //			findInstructorDetail(appDAO);
 
@@ -41,7 +41,7 @@ public class AdvancedMappingCruddemoApplication {
 
 //			updateInstructor(appDAO);
 
-			updateCourse(appDAO);
+//			updateCourse(appDAO);
 		};
 	}
 
