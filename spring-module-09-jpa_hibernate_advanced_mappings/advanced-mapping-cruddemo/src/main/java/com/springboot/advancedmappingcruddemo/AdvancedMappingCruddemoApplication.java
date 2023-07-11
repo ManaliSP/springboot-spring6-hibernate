@@ -25,7 +25,7 @@ public class AdvancedMappingCruddemoApplication {
 
 //			findInstructor(appDAO);
 
-			deleteInstructor(appDAO);
+//			deleteInstructor(appDAO);
 
 //			findInstructorDetail(appDAO);
 
@@ -42,7 +42,21 @@ public class AdvancedMappingCruddemoApplication {
 //			updateInstructor(appDAO);
 
 //			updateCourse(appDAO);
+
+			deleteCourse(appDAO);
 		};
+	}
+
+	private void deleteCourse(AppDAO appDAO) {
+
+		int id = 10;
+
+		System.out.println("Finding course id: " + id);
+
+		// delete course
+		appDAO.deleteCourseById(id);
+
+		System.out.println("Done!");
 	}
 
 	private void updateCourse(AppDAO appDAO) {
