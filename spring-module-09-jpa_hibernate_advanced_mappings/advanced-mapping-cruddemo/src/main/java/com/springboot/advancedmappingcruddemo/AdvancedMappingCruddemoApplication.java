@@ -39,8 +39,27 @@ public class AdvancedMappingCruddemoApplication {
 
 //			findInstructorWithCoursesJoinFetch(appDAO);
 
-			updateInstructor(appDAO);
+//			updateInstructor(appDAO);
+
+			updateCourse(appDAO);
 		};
+	}
+
+	private void updateCourse(AppDAO appDAO) {
+
+		int id = 10;
+
+		// find Course by id
+		System.out.println("Finding course id: " + id);
+		Course course = appDAO.findCourseById(id);
+
+		// update title of the course
+		System.out.println("Updating the course id: " + id);
+		course.setTitle("Think of Good Things");
+
+		appDAO.update(course);
+
+		System.out.println("Done!");
 	}
 
 	private void updateInstructor(AppDAO appDAO) {
