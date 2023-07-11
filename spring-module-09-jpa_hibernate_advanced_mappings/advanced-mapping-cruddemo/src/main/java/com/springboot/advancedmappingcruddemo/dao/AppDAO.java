@@ -1,7 +1,10 @@
 package com.springboot.advancedmappingcruddemo.dao;
 
+import com.springboot.advancedmappingcruddemo.entity.Course;
 import com.springboot.advancedmappingcruddemo.entity.Instructor;
 import com.springboot.advancedmappingcruddemo.entity.InstructorDetail;
+
+import java.util.List;
 
 public interface AppDAO {
     void save(Instructor instructor);
@@ -13,4 +16,6 @@ public interface AppDAO {
     InstructorDetail findInstructorDetailById(int id);
 
     void deleteInstructorDetailById(int id);
+
+    List<Course> findCoursesByInstructorId(int id);
 }
