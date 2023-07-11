@@ -75,8 +75,7 @@ public class InstructorDetail {
         return "InstructorDetail{" +
                 "id=" + id +
                 ", youtubeChannel='" + youtubeChannel + '\'' +
-                ", hobby='" + hobby + '\'' +
-                ", instructor=" + instructor +
+                ", hobby='" + hobby +
                 '}';
     }
 }
