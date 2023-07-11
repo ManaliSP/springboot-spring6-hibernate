@@ -29,8 +29,22 @@ public class AdvancedMappingCruddemoApplication {
 
 //			deleteInstructorDetail(appDAO);
 
-			createInstructorWithCourses(appDAO);
+//			createInstructorWithCourses(appDAO);
+
+			findInstructorWithCourses(appDAO);
 		};
+	}
+
+	private void findInstructorWithCourses(AppDAO appDAO) {
+
+		int id = 1;
+		System.out.println("Finding instructor by id: " + id);
+
+		Instructor instructor = appDAO.findInstructorById(id);
+
+		System.out.println("Instructor: " + instructor);
+		System.out.println("Associated Courses: " + instructor.getInstructorDetail());
+		System.out.println("Done!");
 	}
 
 	private void createInstructorWithCourses(AppDAO appDAO) {
