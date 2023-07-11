@@ -53,8 +53,20 @@ public class AdvancedMappingCruddemoApplication {
 
 //			findStudentAndCourses(appDAO);
 
-			addMoreCoursesForStudent(appDAO);
+//			addMoreCoursesForStudent(appDAO);
+
+			deleteStudent(appDAO);
 		};
+	}
+
+	private void deleteStudent(AppDAO appDAO) {
+
+		int id = 2;
+		System.out.println("Deleting student id: " + id);
+
+		appDAO.deleteStudentById(id);
+
+		System.out.println("Done");
 	}
 
 	private void addMoreCoursesForStudent(AppDAO appDAO) {
