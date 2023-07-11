@@ -46,8 +46,26 @@ public class AdvancedMappingCruddemoApplication {
 
 //			deleteCourse(appDAO);
 
-			createCourseAndReview(appDAO);
+//			createCourseAndReview(appDAO);
+
+			retrieveCourseAndReviews(appDAO);
 		};
+	}
+
+	private void retrieveCourseAndReviews(AppDAO appDAO) {
+
+		int id = 10;
+
+		// get the course and reviews
+		Course course = appDAO.findCourseAndReviewsByCourseId(id);
+
+		// print the course
+		System.out.println("Course: " + course);
+
+		// print the reviews
+		System.out.println("Reviews: " + course.getReviews());
+
+		System.out.println("Done!");
 	}
 
 	private void createCourseAndReview(AppDAO appDAO) {
