@@ -1,10 +1,7 @@
 package com.springboot.advancedmappingcruddemo;
 
 import com.springboot.advancedmappingcruddemo.dao.AppDAO;
-import com.springboot.advancedmappingcruddemo.entity.Course;
-import com.springboot.advancedmappingcruddemo.entity.Instructor;
-import com.springboot.advancedmappingcruddemo.entity.InstructorDetail;
-import com.springboot.advancedmappingcruddemo.entity.Review;
+import com.springboot.advancedmappingcruddemo.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -48,8 +45,32 @@ public class AdvancedMappingCruddemoApplication {
 
 //			createCourseAndReview(appDAO);
 
-			retrieveCourseAndReviews(appDAO);
+//			retrieveCourseAndReviews(appDAO);
+
+			createCourseAndStudents(appDAO);
 		};
+	}
+
+	private void createCourseAndStudents(AppDAO appDAO) {
+
+		// create a course
+		Course course  = new Course("Pacman - How To Score One Million Points");
+
+		// create a students
+		Student student1 = new Student("Manali", "Patil", "manali@gmail.com");
+		Student student2 = new Student("John", "Doe", "john@gmail.com");
+
+		// add students to the course
+		course.addStudent(student1);
+		course.addStudent(student2);
+
+		// save the course and associated students
+		System.out.println("Saving the course: " + course);
+		System.out.println("Associated students: " + course.getStudents());
+
+		appDAO.save(course);
+
+		System.out.println("Done!");
 	}
 
 	private void retrieveCourseAndReviews(AppDAO appDAO) {
