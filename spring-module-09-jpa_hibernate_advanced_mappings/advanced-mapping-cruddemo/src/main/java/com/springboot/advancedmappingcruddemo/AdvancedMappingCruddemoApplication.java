@@ -24,10 +24,21 @@ public class AdvancedMappingCruddemoApplication {
 
 //			deleteInstructor(appDAO);
 
-			findInstructorDetail(appDAO);
+//			findInstructorDetail(appDAO);
+
+			deleteInstructorDetail(appDAO);
 		};
 	}
 
+	private void deleteInstructorDetail(AppDAO appDAO){
+
+		int id = 2;
+		System.out.println("Deleting instructor id: " + id);
+
+		appDAO.deleteInstructorDetailById(id);
+
+		System.out.println("Done!");
+	}
 	private void findInstructorDetail(AppDAO appDAO){
 
 		// get the instructor detail object
