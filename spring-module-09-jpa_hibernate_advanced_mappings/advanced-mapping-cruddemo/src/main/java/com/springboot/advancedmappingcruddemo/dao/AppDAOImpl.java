@@ -1,6 +1,7 @@
 package com.springboot.advancedmappingcruddemo.dao;
 
 import com.springboot.advancedmappingcruddemo.entity.Instructor;
+import com.springboot.advancedmappingcruddemo.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,11 @@ public class AppDAOImpl implements AppDAO{
 
         // delete instructor
         entityManager.remove(instructor);
+    }
+
+    @Override
+    public InstructorDetail findInstructorDetailById(int id) {
+
+        return entityManager.find(InstructorDetail.class, id);
     }
 }
