@@ -60,7 +60,16 @@ Pointcut expressions exmaples for reference
         long begin = System.currentTimeMillis();
 
         // now, let's execute the method
-        Object result = proceedingJoinPoint.proceed();
+        Object result = null;
+        try{
+            result = proceedingJoinPoint.proceed();
+        }catch (Exception exception){
+            // log the exception
+            System.out.println(exception.getMessage());
+
+            // give the user a custom message
+            result = "Major accident! but no worries, your private AOP helicopter is on the way!";
+        }
 
         // get end timestamp
         long end = System.currentTimeMillis();

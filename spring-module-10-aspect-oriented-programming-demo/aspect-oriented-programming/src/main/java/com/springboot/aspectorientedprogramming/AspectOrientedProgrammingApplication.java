@@ -28,8 +28,25 @@ public class AspectOrientedProgrammingApplication {
 
 //			demoTheAfterAdvice(accountDAO);
 
-			demoTheAroundAdvice(trafficFortuneService);
+//			demoTheAroundAdvice(trafficFortuneService);
+
+			demoTheAroundAdviceHandleException(trafficFortuneService);
 		};
+	}
+
+	private void demoTheAroundAdviceHandleException(TrafficFortuneService trafficFortuneService) {
+
+		System.out.println("\n\n Main Program: demoTheAroundAdviceHandleException");
+
+		System.out.println("Calling getFortune()");
+
+		boolean tripWire = true;
+
+		String data = trafficFortuneService.getFortune(tripWire);
+
+		System.out.println("\nMy fortune is: " + data);
+
+		System.out.println("Finished!");
 	}
 
 	private void demoTheAroundAdvice(TrafficFortuneService trafficFortuneService) {
