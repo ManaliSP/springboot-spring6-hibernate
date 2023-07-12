@@ -50,11 +50,16 @@ Pointcut expressions exmaples for reference
     @Pointcut("execution(* com.springboot.aspectorientedprogramming.dao.*.*(..))")
     private void forDaoPackage() {}
 
-    // Use pointcut declaration
-    @Before("forDaoPackage()")
-    public void beforeAddAccountAdvice(){
+  // Use pointcut declaration
+  @Before("forDaoPackage()")
+  public void beforeAddAccountAdvice(){
 
-        System.out.println("\n=====> Executing @Before advice on addAccount()");
-    }
+      System.out.println("\n=====> Executing @Before advice on addAccount()");
+  }
 
+  @Before("forDaoPackage()")
+  public void performApiAnalytics(){
+
+      System.out.println("\n=====> Performing API Analysis");
+  }
 }
