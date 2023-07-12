@@ -1,5 +1,6 @@
 package com.springboot.aspectorientedprogramming;
 
+import com.springboot.aspectorientedprogramming.dao.AccountDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +14,15 @@ public class AspectOrientedProgrammingApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(String args[]){
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO){
 		return runner -> {
-			System.out.println("Hello World!");
+			demoTheBeforeAdvice(accountDAO);
 		};
+	}
+
+	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
+
+		// call the business method
+		accountDAO.addAccount();
 	}
 }
