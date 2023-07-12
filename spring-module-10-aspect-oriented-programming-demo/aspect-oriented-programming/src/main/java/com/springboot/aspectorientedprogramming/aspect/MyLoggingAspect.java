@@ -1,7 +1,10 @@
 package com.springboot.aspectorientedprogramming.aspect;
 
+import com.springboot.aspectorientedprogramming.Account;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -45,9 +48,31 @@ Pointcut expressions exmaples for reference
 
     // Use pointcut declaration
     @Before("com.springboot.aspectorientedprogramming.aspect.AopPointcutExpressions.forDaoPackageNoGetterSetter()")
-    public void beforeAddAccountAdvice(){
+    public void beforeAddAccountAdvice(JoinPoint joinPoint){
 
-        System.out.println("\n=====> Executing @Before advice on addAccount()");
+      System.out.println("\n=====> Executing @Before advice on addAccount()");
+
+      // display the method signature
+      MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+      System.out.println("Method: " + methodSignature);
+
+      // display method arguments
+
+      // get args
+      Object[] args = joinPoint.getArgs();
+
+      // loop through args
+      for(Object tempArgs : args){
+        System.out.println(tempArgs);
+
+        if(tempArgs instanceof Account){
+
+          // downcast and point Account specific stuff
+          Account account = (Account) tempArgs;
+
+          System.out.println("Account name: " + account.getName());
+          System.out.println("Account level: " + account.getLevel());
+        }
+      }
     }
-
 }

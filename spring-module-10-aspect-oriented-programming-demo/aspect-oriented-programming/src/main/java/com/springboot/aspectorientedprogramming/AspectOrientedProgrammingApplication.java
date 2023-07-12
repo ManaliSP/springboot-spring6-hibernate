@@ -25,6 +25,8 @@ public class AspectOrientedProgrammingApplication {
 
 		// call the business method
 		Account account =  new Account();
+		account.setName("Manali");
+		account.setLevel("Senior");
 		accountDAO.addAccount(account, true);
 		accountDAO.addAnotherAccount();
 
