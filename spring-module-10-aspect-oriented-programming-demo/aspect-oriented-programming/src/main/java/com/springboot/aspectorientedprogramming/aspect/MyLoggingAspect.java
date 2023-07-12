@@ -59,7 +59,7 @@ Pointcut expressions exmaples for reference
         // get begin timestamp
         long begin = System.currentTimeMillis();
 
-        // now, let's execute the method
+        // now, let's execute the method - handle exception
         Object result = null;
         try{
             result = proceedingJoinPoint.proceed();
@@ -68,7 +68,10 @@ Pointcut expressions exmaples for reference
             System.out.println(exception.getMessage());
 
             // give the user a custom message
-            result = "Major accident! but no worries, your private AOP helicopter is on the way!";
+//            result = "Major accident! but no worries, your private AOP helicopter is on the way!";
+
+            // rethrow exception
+            throw exception;
         }
 
         // get end timestamp
