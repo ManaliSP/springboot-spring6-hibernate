@@ -12,6 +12,13 @@ public class MyLoggingAspect {
 
     // let's start with @Before aspect
 
+    // pointcut expression - match on method name in any class
+//    @Before("execution(public void addAccount())")
+
+    // pointcut expression - match on method name in specific class/interface
+//    @Before("execution(public void  com.springboot.aspectorientedprogramming.dao.AccountDAO.addAccount())")
+
+    // pointcut expression - match on method name any add*
     @Before("execution(public void  com.springboot.aspectorientedprogramming.dao.AccountDAO.addAccount())")
     public void beforeAddAccountAdvice(){
 
