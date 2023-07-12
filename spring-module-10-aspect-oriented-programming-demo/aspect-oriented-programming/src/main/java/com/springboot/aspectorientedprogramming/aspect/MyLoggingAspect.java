@@ -61,6 +61,25 @@ Pointcut expressions exmaples for reference
 
         // print out the results of the method call
         System.out.println("\n=====>>> Accounts are: " + accounts);
+
+        // lets post-process the data ... lets modify it :-)
+        // convert the account names to uppercase
+        convertAccountNamesToUpperCase(accounts);
+
+        // print out the results of the method call
+        System.out.println("\n=====>>> Uppercase Accounts are: " + accounts);
+    }
+
+    private void convertAccountNamesToUpperCase(List<Account> accounts) {
+
+        // loop through accounts
+        for(Account account : accounts){
+            // get uppercase version of account name
+            String uppercaseName = account.getName().toUpperCase();
+
+            // update the name on account
+            account.setName(uppercaseName);
+        }
     }
 
     // Use pointcut declaration
