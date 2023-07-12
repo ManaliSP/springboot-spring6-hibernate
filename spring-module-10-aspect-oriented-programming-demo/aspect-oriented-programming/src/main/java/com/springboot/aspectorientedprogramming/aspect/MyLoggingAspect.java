@@ -19,7 +19,10 @@ public class MyLoggingAspect {
 //    @Before("execution(public void  com.springboot.aspectorientedprogramming.dao.AccountDAO.addAccount())")
 
     // pointcut expression - match on method name any add*
-    @Before("execution(public void add*())")
+//    @Before("execution(public void add*())")
+
+    // pointcut expression - match method with bases on return type
+    @Before("execution(void add*())")
     public void beforeAddAccountAdvice(){
 
         System.out.println("\n=====> Executing @Before advice on addAccount()");
