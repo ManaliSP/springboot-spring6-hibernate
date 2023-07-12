@@ -2,6 +2,7 @@ package com.springboot.aspectorientedprogramming;
 
 import com.springboot.aspectorientedprogramming.dao.AccountDAO;
 import com.springboot.aspectorientedprogramming.dao.MembershipDAO;
+import com.springboot.aspectorientedprogramming.service.TrafficFortuneService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +18,7 @@ public class AspectOrientedProgrammingApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO){
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO, TrafficFortuneService trafficFortuneService){
 		return runner -> {
 //			demoTheBeforeAdvice(accountDAO, membershipDAO);
 
@@ -25,8 +26,23 @@ public class AspectOrientedProgrammingApplication {
 
 //			demoTheAfterThrowingAdvice(accountDAO);
 
-			demoTheAfterAdvice(accountDAO);
+//			demoTheAfterAdvice(accountDAO);
+
+			demoTheAroundAdvice(trafficFortuneService);
 		};
+	}
+
+	private void demoTheAroundAdvice(TrafficFortuneService trafficFortuneService) {
+
+		System.out.println("\n\n Main Program: demoTheAroundAdvice");
+
+		System.out.println("Calling getFortune()");
+
+		String data = trafficFortuneService.getFortune();
+
+		System.out.println("\nMy fortune is: " + data);
+
+		System.out.println("Finished!");
 	}
 
 	private void demoTheAfterAdvice(AccountDAO accountDAO) {
@@ -38,8 +54,7 @@ public class AspectOrientedProgrammingApplication {
 			// add a boolean flag to simulate exceptions
 			boolean tripWire = false;
 			accounts = accountDAO.findAccounts(tripWire);
-		}
-		catch (Exception exception){
+		} catch (Exception exception){
 			System.out.println("\n\n Main Program: caught exception: " +exception);
 		}
 
@@ -60,8 +75,7 @@ public class AspectOrientedProgrammingApplication {
 			// add a boolean flag to simulate exceptions
 			boolean tripWire = true;
 			accounts = accountDAO.findAccounts(tripWire);
-		}
-		catch (Exception exception){
+		} catch (Exception exception){
 			System.out.println("\n\n Main Program: caught exception: " +exception);
 		}
 
