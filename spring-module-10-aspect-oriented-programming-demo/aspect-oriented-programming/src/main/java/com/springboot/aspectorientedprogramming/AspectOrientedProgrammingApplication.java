@@ -25,7 +25,7 @@ public class AspectOrientedProgrammingApplication {
 
 		// call the business method
 		Account account =  new Account();
-		accountDAO.addAccount(account);
+		accountDAO.addAccount(account, true);
 
 		// call the business method
 		accountDAO.addAnotherAccount();
