@@ -21,8 +21,33 @@ public class AspectOrientedProgrammingApplication {
 		return runner -> {
 //			demoTheBeforeAdvice(accountDAO, membershipDAO);
 
-			demoTheAfterReturningAdvice(accountDAO);
+//			demoTheAfterReturningAdvice(accountDAO);
+
+			demoTheAfterThrowingAdvice(accountDAO);
 		};
+	}
+
+	private void demoTheAfterThrowingAdvice(AccountDAO accountDAO) {
+
+		// call a business method findAccount()
+		List<Account> accounts = null;
+
+		try{
+			// add a boolean flag to simulate exceptions
+			boolean tripWire = true;
+			accounts = accountDAO.findAccounts(tripWire);
+		}
+		catch (Exception exception){
+			System.out.println("\n\n Main Program: caught exception: " +exception);
+		}
+
+
+		// display accounts
+		System.out.println("\n\n Main Program: demoTheAfterThrowingAdvice");
+
+		System.out.println(accounts);
+
+		System.out.println("\n");
 	}
 
 	private void demoTheAfterReturningAdvice(AccountDAO accountDAO) {

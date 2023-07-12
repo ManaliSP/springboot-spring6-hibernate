@@ -3,6 +3,7 @@ package com.springboot.aspectorientedprogramming.aspect;
 import com.springboot.aspectorientedprogramming.Account;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -48,6 +49,19 @@ Pointcut expressions exmaples for reference
      pointcut expression - match method in a package
     @Before("execution(* com.springboot.aspectorientedprogramming.dao.*.*(..))")
 */
+
+    @AfterThrowing(
+            pointcut = "execution(* com.springboot.aspectorientedprogramming.dao.AccountDAO.findAccounts(..))",
+            throwing = "caughtException")
+    public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable caughtException){
+
+        // print out which method we are advising on
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n=====>>> Executing @AfterThrowing on method: " + method);
+
+        // log the exception
+        System.out.println("\n=====>>> Exception is: " + caughtException);
+    }
 
     // add new advice for @AfterReturning on the findAccount method
     @AfterReturning(
