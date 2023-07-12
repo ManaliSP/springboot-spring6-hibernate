@@ -47,17 +47,29 @@ Pointcut expressions exmaples for reference
 */
 
   // Pointcut declaration
-    @Pointcut("execution(* com.springboot.aspectorientedprogramming.dao.*.*(..))")
-    private void forDaoPackage() {}
+  @Pointcut("execution(* com.springboot.aspectorientedprogramming.dao.*.*(..))")
+  private void forDaoPackage() {}
+
+  // create a pointcut for getter methods
+  @Pointcut("execution(* com.springboot.aspectorientedprogramming.dao.*.get*(..))")
+  private void getter(){}
+
+  //create a pointcut for setter methods
+  @Pointcut("execution(* com.springboot.aspectorientedprogramming.dao.*.set*(..))")
+  private void setter(){}
+
+  // create pointcut: include/combine package ... exclude getter/setter
+  @Pointcut("forDaoPackage() && !(getter() || setter())")
+  private void forDaoPackageNoGetterSetter(){}
 
   // Use pointcut declaration
-  @Before("forDaoPackage()")
+  @Before("forDaoPackageNoGetterSetter()")
   public void beforeAddAccountAdvice(){
 
       System.out.println("\n=====> Executing @Before advice on addAccount()");
   }
 
-  @Before("forDaoPackage()")
+  @Before("forDaoPackageNoGetterSetter()")
   public void performApiAnalytics(){
 
       System.out.println("\n=====> Performing API Analysis");

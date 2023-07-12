@@ -26,14 +26,17 @@ public class AspectOrientedProgrammingApplication {
 		// call the business method
 		Account account =  new Account();
 		accountDAO.addAccount(account, true);
-
-		// call the business method
 		accountDAO.addAnotherAccount();
+
+		// call the accountdao getter/setter
+		accountDAO.setName("foobar");
+		accountDAO.setServiceCode("silver");
+
+		String name = accountDAO.getName();
+		String code = accountDAO.getServiceCode();
 
 		// call membership business method
 		membershipDAO.addAccount();
-
-		// call membership business method
 		membershipDAO.isAccountAvailable();
 	}
 }
