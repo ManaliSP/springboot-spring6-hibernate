@@ -12,7 +12,7 @@ public class MyLoggingAspect {
 
     // let's start with @Before aspect
 
-    @Before("execution(public void addAccount())")
+    @Before("execution(public void  com.springboot.aspectorientedprogramming.dao.AccountDAO.addAccount())")
     public void beforeAddAccountAdvice(){
 
         System.out.println("\n=====> Executing @Before advice on addAccount()");
