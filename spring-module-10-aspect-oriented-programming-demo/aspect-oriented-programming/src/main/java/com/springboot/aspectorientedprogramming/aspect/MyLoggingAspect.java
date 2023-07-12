@@ -25,7 +25,12 @@ public class MyLoggingAspect {
 //    @Before("execution(void add*())")
 
     // pointcut expression - match method with any return type
-    @Before("execution(* add*())")
+//    @Before("execution(* add*())")
+
+    // pointcut expression - match method on method parameters
+
+    // match method on Account parameters
+    @Before("execution(* add*(com.springboot.aspectorientedprogramming.Account))")
     public void beforeAddAccountAdvice(){
 
         System.out.println("\n=====> Executing @Before advice on addAccount()");
