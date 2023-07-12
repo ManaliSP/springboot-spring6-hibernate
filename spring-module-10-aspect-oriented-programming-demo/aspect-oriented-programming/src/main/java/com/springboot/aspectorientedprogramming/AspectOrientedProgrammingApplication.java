@@ -26,7 +26,13 @@ public class AspectOrientedProgrammingApplication {
 		// call the business method
 		accountDAO.addAccount();
 
+		// call the business method
+		accountDAO.addAnotherAccount();
+
 		// call membership business method
 		membershipDAO.addAccount();
+
+		// call membership business method
+		membershipDAO.isAccountAvailable();
 	}
 }
