@@ -22,7 +22,10 @@ public class MyLoggingAspect {
 //    @Before("execution(public void add*())")
 
     // pointcut expression - match method with bases on return type
-    @Before("execution(void add*())")
+//    @Before("execution(void add*())")
+
+    // pointcut expression - match method with any return type
+    @Before("execution(* add*())")
     public void beforeAddAccountAdvice(){
 
         System.out.println("\n=====> Executing @Before advice on addAccount()");
