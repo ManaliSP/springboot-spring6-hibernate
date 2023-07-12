@@ -2,10 +2,7 @@ package com.springboot.aspectorientedprogramming.aspect;
 
 import com.springboot.aspectorientedprogramming.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -49,6 +46,16 @@ Pointcut expressions exmaples for reference
      pointcut expression - match method in a package
     @Before("execution(* com.springboot.aspectorientedprogramming.dao.*.*(..))")
 */
+
+    @After("execution(* com.springboot.aspectorientedprogramming.dao.AccountDAO.findAccounts(..))")
+    public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint){
+
+        // print out which method we are advising on
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n=====>>> Executing @After (Finally) on method: " + method);
+
+
+    }
 
     @AfterThrowing(
             pointcut = "execution(* com.springboot.aspectorientedprogramming.dao.AccountDAO.findAccounts(..))",
