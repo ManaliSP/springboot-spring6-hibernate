@@ -2,16 +2,13 @@ package com.springboot.aspectorientedprogramming.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(2)
 public class MyLoggingAspect {
-
-    // this is where we add our related advices for logging
-
-    // let's start with @Before aspect
 
 /*
 Pointcut expressions exmaples for reference
@@ -46,32 +43,11 @@ Pointcut expressions exmaples for reference
     @Before("execution(* com.springboot.aspectorientedprogramming.dao.*.*(..))")
 */
 
-  // Pointcut declaration
-  @Pointcut("execution(* com.springboot.aspectorientedprogramming.dao.*.*(..))")
-  private void forDaoPackage() {}
+    // Use pointcut declaration
+    @Before("com.springboot.aspectorientedprogramming.aspect.AopPointcutExpressions.forDaoPackageNoGetterSetter()")
+    public void beforeAddAccountAdvice(){
 
-  // create a pointcut for getter methods
-  @Pointcut("execution(* com.springboot.aspectorientedprogramming.dao.*.get*(..))")
-  private void getter(){}
+        System.out.println("\n=====> Executing @Before advice on addAccount()");
+    }
 
-  //create a pointcut for setter methods
-  @Pointcut("execution(* com.springboot.aspectorientedprogramming.dao.*.set*(..))")
-  private void setter(){}
-
-  // create pointcut: include/combine package ... exclude getter/setter
-  @Pointcut("forDaoPackage() && !(getter() || setter())")
-  private void forDaoPackageNoGetterSetter(){}
-
-  // Use pointcut declaration
-  @Before("forDaoPackageNoGetterSetter()")
-  public void beforeAddAccountAdvice(){
-
-      System.out.println("\n=====> Executing @Before advice on addAccount()");
-  }
-
-  @Before("forDaoPackageNoGetterSetter()")
-  public void performApiAnalytics(){
-
-      System.out.println("\n=====> Performing API Analysis");
-  }
 }
