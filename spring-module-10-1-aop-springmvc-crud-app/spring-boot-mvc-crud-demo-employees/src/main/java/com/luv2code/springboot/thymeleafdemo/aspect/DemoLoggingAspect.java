@@ -23,4 +23,7 @@ public class DemoLoggingAspect {
 
     @Pointcut("execution(* com.luv2code.springboot.thymeleafdemo.dao.*.*(..))")
     private void forDaoPackage(){}
+    
+    @Pointcut("forControllerPackage() || forServicePackage() || forDaoPackage()")
+    private void forAppFlow(){}
 }
